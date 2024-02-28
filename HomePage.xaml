@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="sztu_xk.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:sztu_xk"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:controls1="using:CommunityToolkit.WinUI.UI.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock
+            Grid.Row="0"
+            >
+            在此处选课后，会自动添加到队列
+        </TextBlock>
+        <controls:WebView2
+            Grid.Row="1"
+            x:Name="webView"
+            Source="https://jwxt.sztu.edu.cn/jsxsd/xsxkkc/comeInBxqjhxk"/>
+        <TextBlock
+            Grid.Row="2"
+            >
+            目前课表
+        </TextBlock>
+        <controls:WebView2
+            Grid.Row="3"
+            x:Name="webView2"
+            Source="https://jwxt.sztu.edu.cn/jsxsd/xsxkjg/xsxkkb"/>
+        <controls1:DataGrid
+            Grid.Row="4"
+            x:Name="dataGrid"
+            AutoGenerateColumns="False"
+            ItemsSource="{x:Bind Reqs, Mode=OneWay}" >
+            <controls1:DataGrid.Columns>
+                <controls1:DataGridTextColumn 
+                    Header="课程名称" 
+                    Width="Auto"
+                    Binding="{Binding LessonName}" />
+                <controls1:DataGridTextColumn 
+                    Header="已尝试"
+                    Width="Auto"
+                    Binding="{Binding TriedTimes}" />
+                <controls1:DataGridTextColumn 
+                    Header="最近一次结果"
+                    Width="Auto"
+                    Binding="{Binding Message}" />
+                <controls1:DataGridCheckBoxColumn 
+                    Header="已完成" 
+                    Width="Auto"
+                    Binding="{Binding isSucceed}" />
+            </controls1:DataGrid.Columns>
+        </controls1:DataGrid>
+    </Grid>
+</Page>

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "sztu-xk (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "sztu-xk (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
